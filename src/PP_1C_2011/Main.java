@@ -4,23 +4,23 @@ import java.util.Comparator;
 
 public class Main {
 
-    //Bag main
-//    public static void main(String[] args){
-//        Bag<String> bag = new MyBag<>();
-//        bag.add("A");
-//        bag.add("B");
-//        bag.add("C");
-//        bag.add("C");
-//        bag.add("B");
-//        bag.add("B");
-//        bag.add("C");
-//        bag.add("C");
-//        bag.print();
-//        bag.remove("B");
-//        bag.print();
-//    }
+//    Bag main
+    public static void main(String[] args){
+        Bag<String> bag = new MyBag<>();
+        bag.add("A");
+        bag.add("B");
+        bag.add("C");
+        bag.add("C");
+        bag.add("B");
+        bag.add("B");
+        bag.add("C");
+        bag.add("C");
+        bag.print();
+        bag.remove("B");
+        bag.print();
+    }
 
-    //HEAP MAIN
+    /*//HEAP MAIN
 
     public static void main(String[] args){
         BinaryTree<Integer> t1 = new BinaryTree<>(3, new BinaryTree<>(9, null, null), new BinaryTree<>(6, null, null));
@@ -33,6 +33,6 @@ public class Main {
                 return integer - t1;
             }
         }));
-    }
+    }*/
 
 }

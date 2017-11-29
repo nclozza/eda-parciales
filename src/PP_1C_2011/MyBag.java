@@ -72,7 +72,7 @@ public class MyBag<T> implements Bag<T>{
                 node = aux;
                 prev.setNext(node);
             }
-            /*node.setValue(node.getNext().getValue()); OTRA ALTERNATIVA, VILLERO, PERO FUNCA
+            /*node.setValue(node.getNext().getValue()); OTRA ALTERNATIVA, FEA, PERO FUNCA
             node.setCount(node.getNext().getCount());
             node.setNext(node.getNext().getNext());*/
             return;
