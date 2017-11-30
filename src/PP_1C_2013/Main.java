@@ -29,6 +29,6 @@ public class Main {
         list.add("E");
         list.add("F");
         BinaryTree<String> t = BinaryTree.buildFromList(list);
-        t.printInorder(t);
+        BinaryTree.printTree(t);
     }
 }
