@@ -140,12 +140,10 @@ public class Graph<V> {
     Stack<StackNode> stack = new Stack<>();
     stack.push(new StackNode(origin, 0));
     StackNode aux;
-    boolean haveReachableNodes;
 
     while (!stack.isEmpty()) {
-      aux = stack.peek();
+      aux = stack.pop();
       aux.node.visited = true;
-      haveReachableNodes = false;
 
       for (Arc eachArc : aux.node.adj) {
         if (eachArc.neighbor.visited) {
@@ -154,20 +152,12 @@ public class Graph<V> {
           }
 
         } else {
-          haveReachableNodes = true;
           if (aux.pathWeight + eachArc.weight <= n) {
             stack.push(new StackNode(eachArc.neighbor, aux.pathWeight + eachArc.weight));
             retGraph.addVertex(eachArc.neighbor.info);
             retGraph.addArc(aux.node.info, eachArc.neighbor.info, eachArc.weight);
           }
         }
-      }
-
-      if (!haveReachableNodes || aux.secondTime) {
-        stack.remove(aux);
-
-      } else {
-        aux.secondTime = true;
       }
     }
 
@@ -178,12 +168,10 @@ public class Graph<V> {
 
     Node node;
     int pathWeight;
-    boolean secondTime;
 
     StackNode(Node node, int pathWeight) {
       this.node = node;
       this.pathWeight = pathWeight;
-      secondTime = false;
     }
   }
 }
