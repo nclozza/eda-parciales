@@ -61,6 +61,44 @@ public class Graph<V> {
             n.visited = false;
     }
 
+    public boolean hasCenter(int n){
+        int current;
+        int nodeCant;
+        for (Node node : nodeList) {
+            nodeCant = nodeList.size()-1;
+            current = 0;
+            Queue<Node> q = new LinkedList<>();
+            clearMarks();
+            clearTags();
+            node.tag = current++;
+            node.visited = true;
+            q.offer(node);
+            while(!q.isEmpty()){
+                Node aux = q.poll();
+                if(current > n) {
+                    break;
+                }
+                for(Arc a : aux.adj){
+                    if (!a.neighbor.visited){
+                        System.out.println("Tageo " + a.neighbor.info + " con current en: " + current);
+                        a.neighbor.tag = current;
+                        a.neighbor.visited = true;
+                        q.offer(a.neighbor);
+                        nodeCant--;
+                    }
+                }
+                if(current <= n && nodeCant == 0)
+                    return true;
+                current++;
+            }
+        }
+        return false;
+    }
+
+    private void clearTags() {
+        for(Node n : nodeList)
+            n.tag = 0;
+    }
 
     private class Node {
         V info;

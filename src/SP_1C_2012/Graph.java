@@ -73,6 +73,8 @@ public class Graph<V> {private HashMap<V, Node> nodes = new HashMap<V, Node>(); 
 
     public Graph<V> subgraph(V v, int n){
         Node origin = nodes.get(v);
+        if(origin == null)
+            return null;
         Stack<SNode> s = new Stack<>();
         s.push(new SNode(origin, 0));
         clearMarks();

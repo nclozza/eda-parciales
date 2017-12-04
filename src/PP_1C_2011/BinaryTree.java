@@ -20,5 +20,7 @@ public class BinaryTree<T> {
     public BinaryTree<T> getRight() {
         return right;
     }
+
+
 }
 

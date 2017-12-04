@@ -66,32 +66,32 @@ public class Graph<V> {
         return maxacum;
     }
 
-    public int minHamiltonianPath(){
-        int minGrade = checkMinGrade();
-        if (minGrade == -1) //significa que no es conexo
-            return -1;
-        Node origin = nodeList.get(minGrade);
-        if (origin == null)
-            throw new RuntimeException("GRAPH IS EMPTY");
-        PriorityQueue<PQNode> pq = new PriorityQueue<>();
-        origin.visited = true;
-        pq.offer(new PQNode(origin, 0));
-        int count = nodeList.size();
-        int acum = 0;
-        while (!pq.isEmpty() || count > 0){
-            PQNode aux = pq.poll();
-            aux.node.visited = true;
-            if (aux.node != origin)
-                count--;
-            for (Arc a : aux.node.adj){
-                if (!a.neighbor.visited) {
-                    acum = aux.weight + a.weight;
-                    pq.offer(new PQNode(a.neighbor, acum));
-                }
-            }
-        }
-        return count == 0 ? acum : -1;
-    }
+//    public int minHamiltonianPath(){
+//        int minGrade = checkMinGrade();
+//        if (minGrade == -1) //significa que no es conexo
+//            return -1;
+//        Node origin = nodeList.get(minGrade);
+//        if (origin == null)
+//            throw new RuntimeException("GRAPH IS EMPTY");
+//        PriorityQueue<PQNode> pq = new PriorityQueue<>();
+//        origin.visited = true;
+//        pq.offer(new PQNode(origin, 0));
+//        int count = nodeList.size();
+//        int acum = 0;
+//        while (!pq.isEmpty() || count > 0){
+//            PQNode aux = pq.poll();
+//            aux.node.visited = true;
+//            if (aux.node != origin)
+//                count--;
+//            for (Arc a : aux.node.adj){
+//                if (!a.neighbor.visited) {
+//                    acum = aux.weight + a.weight;
+//                    pq.offer(new PQNode(a.neighbor, acum));
+//                }
+//            }
+//        }
+//        return count == 0 ? acum : -1;
+//    }
 
     private int checkMinGrade() {
         int min = nodeList.get(0).adj.size();

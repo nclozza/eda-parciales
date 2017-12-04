@@ -15,6 +15,82 @@ public class BinaryTree<T> {
         this.right = right;
     }
 
+    public static <T> int height(BinaryTree<T> tree){
+        if (tree == null)
+            return 0;
+        return heightR(tree);
+    }
+
+    private static <T> int heightR(BinaryTree<T> tree) {
+        if(tree == null)
+            return 0;
+        return 1 + Math.max(heightR(tree.left), heightR(tree.right));
+    }
+
+    public static <T> int longestPath(BinaryTree<T> tree){
+        if (tree == null)
+            throw new IllegalArgumentException();
+        Pack p = new Pack();
+        longestR(tree, p);
+        System.out.println("p.maxS " +p.maxS);
+        System.out.println("p.maxH " +p.maxH);
+
+        return p.maxH > p.maxS ? p.maxH : p.maxS;
+
+    }
+
+    private static <T> void longestR(BinaryTree<T> tree, Pack p) {
+
+        if (tree.left != null && tree.right != null){
+            if (p.maxH== 0)
+                p.maxH+=2;
+            else
+                p.maxH += 1;
+            if(!p.b) {
+                p.b = true;
+                p.maxS += 2;
+            }
+            else {
+                p.maxS -= 2;
+            }
+
+            p.b = false;
+                longestR(tree.left, p);
+            longestR(tree.right, p);
+        } else if (tree.right != null){
+            p.maxH+=1;
+//            p.maxS+=1;
+            longestR(tree.right, p);
+        } else if (tree.left != null){
+//            p.maxS+=1;
+            p.maxH+=1;
+        } else {
+            return;
+        }
+    }
+
+    private static class Pack{
+        int maxH = 0;
+        int maxS = 0;
+        boolean b= false;
+
+        public int getMaxH() {
+            return maxH;
+        }
+
+        public void setMaxH(int maxH) {
+            this.maxH = maxH;
+        }
+
+        public int getMaxS() {
+            return maxS;
+        }
+
+        public void setMaxS(int maxS) {
+            this.maxS = maxS;
+        }
+    }
+
     public static <T> BinaryTree<T> buildFromList(List<T> values) {
         if (values == null)
             throw new IllegalArgumentException("ILLEGAL");

@@ -5,11 +5,12 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args){
-        Graph<String> g = new Graph<>();
+            Graph<String> g = new Graph<>();
         g.addVertex("A");
         g.addVertex("B");
         g.addVertex("C");
         g.addVertex("D");
+
         g.addVertex("E");
         g.addVertex("F");
         g.addArc("A","D", 10);
