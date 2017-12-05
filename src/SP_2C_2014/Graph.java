@@ -68,19 +68,19 @@ public class Graph<V> {
       return null;
     }
 
-    LinkedList<V> linkedList = new LinkedList<>();
+    List<V> list = new LinkedList<>();
 
     for (Node eachNode : nodeList) {
-      if (weightPathR(eachNode, weight, linkedList, 0)) {
-        linkedList.add(eachNode.info);
-        return LinkedListToList(linkedList);
+      if (weightPathR(eachNode, weight, list, 0)) {
+        list.add(eachNode.info);
+        return list;
       }
     }
 
     return null;
   }
 
-  private boolean weightPathR(Node node, double weight, LinkedList<V> linkedList, double acum) {
+  private boolean weightPathR(Node node, double weight, List<V> linkedList, double acum) {
     if (acum == weight) {
       return true;
 
@@ -99,13 +99,5 @@ public class Graph<V> {
       node.visited = false;
       return false;
     }
-  }
-
-  private List<V> LinkedListToList(LinkedList<V> linkedList) {
-    List<V> list = new LinkedList<>();
-
-    list.addAll(linkedList);
-
-    return list;
   }
 }
