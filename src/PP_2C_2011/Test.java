@@ -1,4 +1,4 @@
-package P12011;
+package PP_2C_2011;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class Test {
 
-  public static void main() {
+  public static void main(String[] str) {
 
 //    BinaryTree<String> treeD = new BinaryTree<>("D", null, null);
 //    BinaryTree<String> treeE = new BinaryTree<>("E", null, null);
